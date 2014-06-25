@@ -23,7 +23,7 @@ class Logger:
     def log(self, ltype, logtext):
         tnow = time.strftime(self.tf)
 
-        tolog = "[" + tnow + " " + ltype.name + "] " + logtext
+        tolog = "[" + tnow + " " + ltype.name.replace("_", " ") + "] " + logtext
         self.l.append(tolog)
         if self.ap:
             print(tolog)
@@ -44,6 +44,14 @@ class Logger:
         for i in self.l:
             print(i)
 
+    def setPointer(self, p):
+        self.pointer = p
+        if self.pointer < 0:
+            self.pointer = 0
+            
+        if self.pointer > len(self.l):
+            self.pointer = len(self.l)
+    
     def getPointer(self):
         return self.pointer
             
