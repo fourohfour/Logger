@@ -1,4 +1,5 @@
-from logger import *
+from Logger import *
+from enum import Enum
 
 ### Documentation - Logger ###
 
@@ -19,9 +20,9 @@ logger = Logger(False, "LOG START")
 
 # Add a log to the logger
 #  The arguments specify the type of log and the text to be logged
-#  More Log Types can be added in the LogType enum.
+#  More Log Types can be added in a new Enum.
 
-logger.log(LogType.INFO, "Test Log")
+logger.log(LogType.INFO, "Command Parsed")
 
 
 ## Main Methods
@@ -40,25 +41,48 @@ logger.printAll()
 
 ## Pointer Methods
 
-logger.resetPointer() # Sets Pointer to 0
+# Sets Pointer to 0 - the start of the log
+logger.setPointerToStart()
 
-logger.getPointer() # Gets the Pointer value
+# Sets the Pointer to the end of the log
+logger.setPointerToEnd()
 
-logger.setPointer(3) # Sets the Pointer value
-                     # If the argument is < 0 it becomes zero
-                     # If the argument is > log length it becomes log length
+# Gets the Pointer value
+logger.getPointer()
 
-logger.incrementPointer() # Adds 1 to the Pointer
+# Sets the Pointer value
+#  If the argument is < 0 it becomes zero
+#  If the argument is > log length it becomes log length
+logger.setPointer(3)
+
+# Adds to the Pointer
+#  Prevents Illegal Values
+logger.incrementPointer() # Adds 1 by default
 logger.incrementPointer(3)# Optional Argument
-                          # Prevents Illegal Values
 
-logger.decrementPointer() # Takes 1 from the Pointer
+# Takes from the Pointer
+#  Prevents Illegal Values
+logger.decrementPointer() # Takes 1 by default
 logger.decrementPointer(3)# Optional Argument
-                          # Prevents Illegal Values
 
 
 ## Misc. Methods
 
-logger.getNew() # Gets new values and returns as list; moves pointer
+# Gets new values and returns as list
+#  Moves Pointer forward
+logger.getNew()
 
-logger.getAll() # Gets all values and returns as list
+# Gets all values and returns as list
+logger.getAll()
+
+
+## Use of a custom Enum for additional log values
+
+# New Enum to be used with additional values to the normal Enum
+#  Underscores are replaced with spaces when the message is formatted
+class DisasterType(Enum):
+    OH_CRAP = 0
+    OVERHEATING_CORE = 1
+
+# Create a log with the new Enum Type as an argument
+logger.log(DisasterType.OH_CRAP, "Critical Error: Shutting Down Reactor Core")
