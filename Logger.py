@@ -44,9 +44,6 @@ class Logger:
         for i in self.l:
             print(i)
 
-    def resetPointer(self):
-        self.pointer = 0
-
     def getPointer(self):
         return self.pointer
             
@@ -64,12 +61,8 @@ class Logger:
         if self.pointer < 0:
             self.pointer = 0
 
-    def setPointerToStart(self, p):
-        self.pointer = p
-        if self.pointer < 0:
-            self.pointer = 0
+    def setPointerToStart(self):
+        self.pointer = 0
             
-    def setPointerToEnd(self, p):
-        self.pointer = p
-        if self.pointer > len(self.l):
-            self.pointer = len(self.l)
+    def setPointerToEnd(self):
+        self.pointer = len(self.l)
