@@ -1,4 +1,4 @@
-import Logger
+from logger import *
 
 ### Documentation - Logger ###
 
