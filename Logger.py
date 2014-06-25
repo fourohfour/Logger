@@ -1,11 +1,6 @@
 import time
 from enum import Enum
 
-# Types of log. Add more if needed.
-#  A new type can be added with a new line such as:
-#  SUCCESS = 2
-#  Note that all types should have unique numerical values
-
 class LogType(Enum):
     INFO = 0
     WARNING = 1
@@ -54,11 +49,6 @@ class Logger:
 
     def getPointer(self):
         return self.pointer
-
-    def setPointer(self, p):
-        self.pointer = p
-        if self.pointer < 0:
-            self.pointer = 0
             
         if self.pointer > len(self.l):
             self.pointer = len(self.l)
@@ -73,3 +63,13 @@ class Logger:
         self.pointer -= amount
         if self.pointer < 0:
             self.pointer = 0
+
+    def setPointerToStart(self, p):
+        self.pointer = p
+        if self.pointer < 0:
+            self.pointer = 0
+            
+    def setPointerToEnd(self, p):
+        self.pointer = p
+        if self.pointer > len(self.l):
+            self.pointer = len(self.l)
