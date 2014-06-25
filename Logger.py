@@ -4,6 +4,15 @@ from enum import Enum
 class LogType(Enum):
     INFO = 0
     WARNING = 1
+    ERROR = 2
+    FATAL = 3
+    FAILURE = 4
+    SUCCESS = 5
+    STARTING = 6
+    COMPLETE = 7
+    WAITING = 8
+    ABOUT = 9
+    
 
 class Logger:
     def __init__(self, autoprint, header, timeformat = None):
