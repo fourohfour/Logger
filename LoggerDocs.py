@@ -86,3 +86,11 @@ class DisasterType(Enum):
 
 # Create a log with the new Enum Type as an argument
 logger.log(DisasterType.OH_CRAP, "Critical Error: Shutting Down Reactor Core")
+
+
+## Final Print
+
+print("All Logs added \n")
+
+# Printing all the logs
+logger.printAll()
