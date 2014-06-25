@@ -90,7 +90,7 @@ logger.log(DisasterType.OH_CRAP, "Critical Error: Shutting Down Reactor Core")
 
 ## Final Print
 
-print("All Logs added \n")
+print("\n All Logs added \n")
 
 # Printing all the logs
 logger.printAll()
