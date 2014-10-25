@@ -52,6 +52,11 @@ class Logger:
     def printAll(self):
         for i in self.l:
             print(i)
+    
+    def writeAllToFile(self, path):
+        with open(path, "a") as f:
+            for i in self.l:
+                f.write(i)
 
     def setPointer(self, p):
         self.pointer = p
